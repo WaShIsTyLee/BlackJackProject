@@ -69,7 +69,7 @@ public class Players {
      */
     public Card askForCard(){
 
-        return card;
+        return null;
     }
 
 }
