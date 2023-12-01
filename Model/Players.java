@@ -1,35 +1,41 @@
 package Model;
 
+import java.util.Arrays;
 import java.util.Objects;
 
 public class Players {
 
+
     private String userName; //Name of the Player //Nombre del Jugador
     private double moneyToBet; // MoneyToBet of Player // Dinero que dispone el Jugador para apostar
+    private Card[] deckPlayer;
 
 
-
-    /**
-     * Parameterized constructor Players // Constructor parametrizado Jugador
-     * @param userName   of player // Nombre del Jugador
-     * @param moneyToBet of player // Dinero que dispone el Jugador para apostar
-     */
-    public Players(String userName, double moneyToBet) {
-
+    public Players(String userName, double moneyToBet, Card[] deckPlayer) {
         this.userName = userName;
         this.moneyToBet = moneyToBet;
-        if (moneyToBet == 0.25) { //PREGUNTAR SI PUEDO PONER UN EASTER EGG Y METERLE UN SOUT DE ENHORABUENA
-            moneyToBet = 50;
-
-        }
+        this.deckPlayer = deckPlayer;
     }
 
-    /**
-     * Default Constructor // Constructor por defecto
-     */
     public Players() {
 
-        this("User", 0);
+        this(" ", 0, null);
+    }
+
+    public void cardPlayer(Card[] playerDeck, Card player) {
+
+        System.out.println(playerDeck);
+        System.out.println(player);
+
+        Card[] newPlayerDeck = new Card[playerDeck.length + 1];
+        for (int i = 0; i < playerDeck.length; i++) {
+
+            newPlayerDeck[i] = playerDeck[i];
+
+        }
+        System.out.println(newPlayerDeck.length);
+        newPlayerDeck[(newPlayerDeck.length-1)]= player;
+        setDeckPlayer(newPlayerDeck);
 
     }
 
@@ -38,7 +44,7 @@ public class Players {
     }
 
     public void setUserName(String userName) {
-        userName = userName;
+        this.userName = userName;
     }
 
     public double getMoneyToBet() {
@@ -46,30 +52,34 @@ public class Players {
     }
 
     public void setMoneyToBet(double moneyToBet) {
-        moneyToBet = moneyToBet;
+        this.moneyToBet = moneyToBet;
+    }
+
+    public Card[] getDeckPlayer() {
+        return deckPlayer;
+    }
+
+    public void setDeckPlayer(Card[] deckPlayer) {
+        this.deckPlayer = deckPlayer;
+    }
+
+    @Override
+    public String toString() {
+        return "Players{" +
+                "userName='" + userName + '\'' +
+                ", moneyToBet=" + moneyToBet +
+                ", deckPlayer=" + Arrays.toString(deckPlayer) +
+                '}';
     }
 
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Players players)) return false;
-        return Double.compare(getMoneyToBet(), players.getMoneyToBet()) == 0 && Objects.equals(getUserName(), players.getUserName());
-    }
-
-    @Override
-    public String toString() {
-        return "Players{" + "UserName='" + userName + '\'' + ", MoneyToBet=" + moneyToBet + '}';
+        return Objects.equals(getUserName(), players.getUserName()) && Arrays.equals(getDeckPlayer(), players.getDeckPlayer());
     }
 
 
 
-    /**
-     * Ask for a Card // Jugador pide una carta
-     * @return Card // Devuelve la carta
-     */
-    public Card askForCard(){
-
-        return null;
-    }
 
 }

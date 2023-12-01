@@ -55,8 +55,7 @@ public class Card {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (!(o instanceof Card card)) return false;
-        return getValue() == card.getValue() && Objects.equals(getSuit(), card.getSuit()) && Objects.equals(getColor(), card.getColor());
-
+        return getValue() == card.getValue() && Objects.equals(getSuit(), card.getSuit());
     }
 
     @Override
