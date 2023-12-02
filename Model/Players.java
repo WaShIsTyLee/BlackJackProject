@@ -34,7 +34,7 @@ public class Players {
 
         }
         System.out.println(newPlayerDeck.length);
-        newPlayerDeck[(newPlayerDeck.length-1)]= player;
+        newPlayerDeck[(newPlayerDeck.length - 1)] = player;
         setDeckPlayer(newPlayerDeck);
 
     }
@@ -79,7 +79,13 @@ public class Players {
         return Objects.equals(getUserName(), players.getUserName()) && Arrays.equals(getDeckPlayer(), players.getDeckPlayer());
     }
 
+    public static Players player1() {
+        Players ia = new Players();
+        Players player1 = new Players();
 
+
+        return player1();
+    }
 
 
 }

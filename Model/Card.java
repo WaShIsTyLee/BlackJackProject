@@ -10,6 +10,7 @@ public class Card {
 
     /**
      * Parameterized constructor Card // Constructor parametrizado Carta
+     *
      * @param value of Card // Valor de Carta
      * @param suit  of Car // Palo de Carta
      * @param color of Card // Color de la Carta
@@ -60,12 +61,23 @@ public class Card {
 
     @Override
     public String toString() {
-        return "Card{" +
-                "value=" + value +
-                ", suit='" + suit + '\'' +
-                ", color='" + color + '\'' +
-                '}';
+        StringBuilder carta = new StringBuilder();
+
+        carta.append("+--------------+\n");
+        carta.append("|              |\n");
+        carta.append("|              |\n");
+        carta.append("|   ").append(value).append("    |\n");
+        carta.append("|              |\n");
+        carta.append("|              |\n");
+        carta.append("|              |\n");
+        carta.append("|     ").append(suit).append("      |\n");
+        carta.append("|              |\n");
+        carta.append("|              |\n");
+        carta.append("+--------------+\n");
+        carta.append("Tu carta: ").append(color);
+
+        return carta.toString();
+
+
     }
-
-
 }

@@ -70,11 +70,10 @@ public class Deck {
         }
         return null;
     }
-// PASAR VALOR NUMCARDS DESDE OTRAA FUNCION
+// PASAR VALOR NUMCARDS DESDE OTRA FUNCION
 
     /**
      * Give a Card if player ask for one // Da una carta al jugador cuando este la pide
-     *
      * @param cards for player // Carta del jugador cuando pide
      * @return Card // Carta
      */
