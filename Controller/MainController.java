@@ -6,8 +6,7 @@ import Model.Players;
 
 import java.util.Scanner;
 
-import static View.ViewOfGame.optionWelcome;
-import static View.ViewOfGame.printCasino;
+import static View.ViewOfGame.*;
 
 public class MainController {
     public static void main(String[] args) {
@@ -15,18 +14,33 @@ public class MainController {
         printCasino();
         optionWelcome();
         keyboardString();
-        menu();
+
+
     }
 
 
-    public static void menu() {
+    public static int menu(int playersOfGame) {
 
         Deck deck = new Deck();
-        int players = 0;
-        System.out.println("Cuantos jugadores sois: ");
-        players = keyboardInt();
+        int players = playersOfGame;
+        Players players1;
+        Players players2;
+        Players players3;
+        Players players4;
+        Players ia;
+
         switch (players) {
             case 1:
+                players1 = new Players();
+                ia = new Players();
+
+                players1.setUserName(namePlayer());
+                give2CardsS1(players1, deck.getCards());
+                System.out.println(players1);
+                ia.setUserName(iaName());
+                give2CardsS1(ia, deck.getCards());
+                System.out.println(ia);
+
 
                 break;
             case 2:
@@ -40,25 +54,11 @@ public class MainController {
                 break;
 
         }
-        Scanner teclado = new Scanner(System.in);
 
 
-        Players players1 = new Players();
-        give2CardsS1(players1, deck.getCards());
-        System.out.println(players1);
-        Card[] prueba = deck.getCards();
-
-        players1.cardPlayer(players1.getDeckPlayer(), prueba[3]);
-        System.out.println(players1);
+        return players;
 
 
-    }
-
-    public static Players addPlayer() {
-
-        Players player = new Players();
-        System.out.println();
-        return player;
     }
 
 
@@ -70,16 +70,42 @@ public class MainController {
             newPlayerCards[i] = deck[randomCard];
         }
         player1.setDeckPlayer(newPlayerCards);
+        System.out.println(newPlayerCards);
 
     }
 
-    /**
-     * Ask for a Card // Jugador pide una carta
-     *
-     * @return Card // Devuelve la carta
-     */
-    public Card askForCard() {
-        return null;
+    public static void wantCard() {
+
+        String option = " ";
+        boolean valid = true;
+        Players player = new Players();
+       // Card[] deck = new Card[];
+
+        do {
+            System.out.println("¿Quiere otra carta?");
+            option = keyboardString();
+
+            if (option.equals("si")) {
+                //cardAsked(player,);
+            } else {
+                System.out.println("Su turno ha terminado");
+                valid = false;
+            }
+        } while (valid);
+    }
+
+
+    public static Card[] cardAsked(Players player1, Card[] deck) {
+
+        Card[] newPlayerCards = new Card[1];
+        for (int i = 0; i < newPlayerCards.length; i++) {
+            int randomCard = (int) (Math.random() * 52) + 1;
+            newPlayerCards[i] = deck[randomCard];
+        }
+        player1.setDeckPlayer(newPlayerCards);
+        System.out.println(newPlayerCards);
+
+        return newPlayerCards;
     }
 
 

@@ -8,22 +8,14 @@ public class Card {
     private String suit; //Palo de la Carta
     private String color; //Color de la Carta
 
-    /**
-     * Parameterized constructor Card // Constructor parametrizado Carta
-     *
-     * @param value of Card // Valor de Carta
-     * @param suit  of Car // Palo de Carta
-     * @param color of Card // Color de la Carta
-     */
+
     public Card(int value, String suit, String color) {
         this.value = value;
         this.suit = suit;
         this.color = color;
     }
 
-    /**
-     * Default Constructor // Constructor por defecto
-     */
+
     public Card() {
         this(0, " ", " ");
     }
@@ -59,25 +51,21 @@ public class Card {
         return getValue() == card.getValue() && Objects.equals(getSuit(), card.getSuit());
     }
 
+
+    //TOCAR ESTO PARA CREAR UNA CARTA
+
     @Override
     public String toString() {
-        StringBuilder carta = new StringBuilder();
-
-        carta.append("+--------------+\n");
-        carta.append("|              |\n");
-        carta.append("|              |\n");
-        carta.append("|   ").append(value).append("    |\n");
-        carta.append("|              |\n");
-        carta.append("|              |\n");
-        carta.append("|              |\n");
-        carta.append("|     ").append(suit).append("      |\n");
-        carta.append("|              |\n");
-        carta.append("|              |\n");
-        carta.append("+--------------+\n");
-        carta.append("Tu carta: ").append(color);
-
-        return carta.toString();
-
-
+        StringBuilder sb = new StringBuilder();
+        sb.append("*****************\n");  // Línea superior del contorno
+        sb.append("*               *\n");
+        sb.append("*   Tu carta    *\n");
+        sb.append("*               *\n");
+        sb.append("*   value=").append(value).append("     *\n");
+        sb.append("*   suit='").append(suit).append("'  *\n");
+        sb.append("*   color='").append(color).append("' *\n");
+        sb.append("*               *\n");
+        sb.append("*****************\n");  // Línea inferior del contorno
+        return sb.toString();
     }
 }

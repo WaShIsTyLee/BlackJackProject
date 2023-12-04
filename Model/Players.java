@@ -7,20 +7,36 @@ public class Players {
 
 
     private String userName; //Name of the Player //Nombre del Jugador
-    private double moneyToBet; // MoneyToBet of Player // Dinero que dispone el Jugador para apostar
-    private Card[] deckPlayer;
+    private Card[] deckPlayer; //Deck of player // Mazo del jugador
 
 
-    public Players(String userName, double moneyToBet, Card[] deckPlayer) {
+
+
+    public Players(String userName, Card[] deckPlayer) {
         this.userName = userName;
-        this.moneyToBet = moneyToBet;
         this.deckPlayer = deckPlayer;
     }
 
-    public Players() {
-
-        this(" ", 0, null);
+    public Players(){
+        this ("",null);
     }
+
+    public String getUserName() {
+        return userName;
+    }
+
+    public void setUserName(String userName) {
+        this.userName = userName;
+    }
+
+    public Card[] getDeckPlayer() {
+        return deckPlayer;
+    }
+
+    public void setDeckPlayer(Card[] deckPlayer) {
+        this.deckPlayer = deckPlayer;
+    }
+
 
     public void cardPlayer(Card[] playerDeck, Card player) {
 
@@ -36,40 +52,6 @@ public class Players {
         System.out.println(newPlayerDeck.length);
         newPlayerDeck[(newPlayerDeck.length - 1)] = player;
         setDeckPlayer(newPlayerDeck);
-
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
-    }
-
-    public double getMoneyToBet() {
-        return moneyToBet;
-    }
-
-    public void setMoneyToBet(double moneyToBet) {
-        this.moneyToBet = moneyToBet;
-    }
-
-    public Card[] getDeckPlayer() {
-        return deckPlayer;
-    }
-
-    public void setDeckPlayer(Card[] deckPlayer) {
-        this.deckPlayer = deckPlayer;
-    }
-
-    @Override
-    public String toString() {
-        return "Players{" +
-                "userName='" + userName + '\'' +
-                ", moneyToBet=" + moneyToBet +
-                ", deckPlayer=" + Arrays.toString(deckPlayer) +
-                '}';
     }
 
     @Override
@@ -79,13 +61,13 @@ public class Players {
         return Objects.equals(getUserName(), players.getUserName()) && Arrays.equals(getDeckPlayer(), players.getDeckPlayer());
     }
 
-    public static Players player1() {
-        Players ia = new Players();
-        Players player1 = new Players();
-
-
-        return player1();
+    @Override
+    public String toString() {
+        return  "   Mano de " +  userName  +
+                 Arrays.toString(deckPlayer);
     }
-
-
 }
+
+
+
+

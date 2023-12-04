@@ -33,7 +33,7 @@ public class Deck {
 
         for (int i = 0; i < suit.length; i++) {
 
-            for (int j = 1; j <= 12; j++) {
+            for (int j = 1; j <= 13; j++) {
 
                 if (suit[i] == "Picas" || suit[i] == "Treboles") {
 
@@ -51,44 +51,6 @@ public class Deck {
 
     }
 
-
-    /**
-     * Give 2 random Card to player in the step 1 // Da dos carta aleatoria al usuario en el primer movimiento
-     *
-     * @param cards
-     * @return
-     */
-    public Card[] give2RandomCard(Card[] cards, int numCards) {
-
-        Random give2RandomCard = new Random();
-        Card[] randomCard = new Card[numCards];
-
-        for (int i = 0; i < numCards; i++) {
-
-            int index = give2RandomCard.nextInt(cards.length);
-            randomCard[i] = cards[index];
-        }
-        return null;
     }
-// PASAR VALOR NUMCARDS DESDE OTRA FUNCION
-
-    /**
-     * Give a Card if player ask for one // Da una carta al jugador cuando este la pide
-     * @param cards for player // Carta del jugador cuando pide
-     * @return Card // Carta
-     */
-    public Card[] giveRandomCardAsked(Card[] cards, int numCards) {
-        Random giveRandomCardAsked = new Random();
-        Card[] randomCard = new Card[numCards];
-
-        for (int i = 0; i < 1; i++) {
-
-            int index = giveRandomCardAsked.nextInt(cards.length);
-            randomCard[i] = cards[index];
-        }
-        return null;
-    }
-}
-
 
 
