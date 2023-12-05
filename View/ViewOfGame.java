@@ -17,6 +17,7 @@ public class ViewOfGame {
         String green = "\033[32m";
         String blue = "\033[34m";
         String purple = "\033[35m";
+        String blanco = "\033[47m";
 
         String hearth = "\u2764";
         String lance = "\u2660";
@@ -40,14 +41,14 @@ public class ViewOfGame {
         return welcome;
     }
 
-    public static String optionWelcome() {
+    public static String optionWelcome(int players) {
         Scanner scanner = new Scanner(System.in);
 
         System.out.println(printWelcome());
         String option = scanner.nextLine().toLowerCase();
 
         if (option.equals("si")) {
-            menu(playersOfGame());
+            menu();
 
         } else {
             System.out.println("Gracias por su visita.");

@@ -5,7 +5,7 @@ import java.util.Random;
 
 public class Deck {
     private Card[] cards = new Card[52];
-    private String[] suit = {"Diamantes", "Picas", "Corazones", "Treboles"};
+    private String[] suit = {"\u2666", "\u2660", "\u2764", "\u2663"};
 
     public Card[] getCards() {
         return cards;
@@ -17,9 +17,7 @@ public class Deck {
 
     @Override
     public String toString() {
-        return "Deck{" +
-                "cards=" + Arrays.toString(cards) +
-                '}';
+        return Arrays.toString(cards);
     }
 
     /**
@@ -35,13 +33,13 @@ public class Deck {
 
             for (int j = 1; j <= 13; j++) {
 
-                if (suit[i] == "Picas" || suit[i] == "Treboles") {
+                if (suit[i] == "\u2660" || suit[i] == "\u2663") {
 
-                    Card card = new Card(j, suit[i], "Negro" );
+                    Card card = new Card(j, suit[i], "\033[30m" );
                     cards [count] = card;
                     count ++;
                 }else{
-                    Card card = new Card(j, suit[i], "Rojo" );
+                    Card card = new Card(j, suit[i], "\033[31m" );
                     cards [count] = card;
                     count ++;
                 }

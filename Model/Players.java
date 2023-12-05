@@ -34,6 +34,7 @@ public class Players {
     }
 
     public void setDeckPlayer(Card[] deckPlayer) {
+
         this.deckPlayer = deckPlayer;
     }
 
@@ -63,8 +64,13 @@ public class Players {
 
     @Override
     public String toString() {
-        return  "   Mano de " +  userName  +
-                 Arrays.toString(deckPlayer);
+        StringBuffer cardString = new StringBuffer();
+
+        for (Card card: deckPlayer ) {
+            cardString.append(card.toString());
+        }
+
+        return  cardString.toString();
     }
 }
 
