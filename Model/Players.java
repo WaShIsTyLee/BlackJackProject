@@ -50,7 +50,6 @@ public class Players {
             newPlayerDeck[i] = playerDeck[i];
 
         }
-        System.out.println(newPlayerDeck.length);
         newPlayerDeck[(newPlayerDeck.length - 1)] = player;
         setDeckPlayer(newPlayerDeck);
     }
