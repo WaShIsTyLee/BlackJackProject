@@ -4,6 +4,7 @@ import java.util.Objects;
 
 public class Card {
 
+
     private int value;
     private String suit; //Palo de la Carta
     private String color; //Color de la Carta
@@ -15,6 +16,8 @@ public class Card {
         this.suit = suit;
         this.color = color;
     }
+
+
 
     public int getValue() {
         return value;
@@ -70,7 +73,7 @@ public class Card {
                     sb.append(color).append("-----------------\n");
                     sb.append("|   Tu carta    |\n");
                     sb.append("|               |\n");
-                    sb.append("|" + "    " + "as" + "         " + ("|\n"));
+                    sb.append("|" + "    " + "AS" + "         " + ("|\n"));
                     sb.append("|               |\n");
                     sb.append("|   " + suit + "          " + (" |\n"));
                     sb.append("|               |\n");

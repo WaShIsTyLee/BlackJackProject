@@ -6,7 +6,10 @@ import java.util.Scanner;
 
 import static Controller.MainController.*;
 
+
 public class ViewOfGame {
+    private static String usedName = "";
+
 
 
     public static void printCasino() {
@@ -33,18 +36,18 @@ public class ViewOfGame {
         System.out.println(black + clover + d + red + " " + "----------------------------" + " " + hearth + " " + black + clover + d + " " + red + diamond + d + " " + black + lance + d + " " + red + "-----------------------------" + " " + diamond + d);
     }
 
-    public static String printWelcome() {
+    public static void printWelcome() {
 
-        String welcome = " ";
-        System.out.println("Bienvenido al Casino");
-        System.out.print("¿Una partida de Blackjack señores y señoras?");
-        return welcome;
+
+        System.out.println("🎲 "+"Bienvenido al Casino"+" 🎲");
+        System.out.print("¿Una partida de Blackjack señores y señoras?" + " 🃏");
+
     }
 
     public static String optionWelcome(int players) {
         Scanner scanner = new Scanner(System.in);
 
-        System.out.println(printWelcome());
+        printWelcome();
         String option = scanner.nextLine().toLowerCase();
 
         if (option.equals("si")) {
@@ -67,7 +70,7 @@ public class ViewOfGame {
                 System.out.println("Partida de entre 1 y 4 jugadores");
                 System.out.println("Cuantos jugadores sois: ");
                 playersOfGame = keyboardInt();
-                if (playersOfGame>=0 && playersOfGame <4){
+                if (playersOfGame>=0 && playersOfGame <=4){
                     valid=false;
                 }
             }catch (Exception e) {
@@ -79,14 +82,25 @@ public class ViewOfGame {
         return playersOfGame;
     }
 
-    public static String namePlayer (){
-        String username="";
-        System.out.println("Introduce tu nombre de usuario: ");
-        username=keyboardString();
+    public static String namePlayer() {
 
-        return username;
+        String name = "";
+
+        do {
+            System.out.println("Introduce tu nombre de usuario: ");
+            name = keyboardString();
+
+            if (usedName.contains(name)) {
+                System.out.println("Este nombre ya está en uso. Por favor, elige otro.");
+            }
+
+        } while (usedName.contains(name));
+
+        usedName += name + " ";
+        return name;
     }
-public static String iaName() {
+
+    public static String iaName() {
     String iaName = "IA";
     return iaName;
 }

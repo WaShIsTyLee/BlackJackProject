@@ -8,17 +8,27 @@ public class Players {
 
     private String userName; //Name of the Player //Nombre del Jugador
     private Card[] deckPlayer; //Deck of player // Mazo del jugador
+    private int sum;
 
 
 
 
-    public Players(String userName, Card[] deckPlayer) {
+    public Players(String userName, Card[] deckPlayer, int sum) {
         this.userName = userName;
         this.deckPlayer = deckPlayer;
+        this.sum=sum;
     }
 
     public Players(){
-        this ("",null);
+        this ("",null,0);
+    }
+
+    public int getSum() {
+        return sum;
+    }
+
+    public void setSum(int sum) {
+        this.sum = sum;
     }
 
     public String getUserName() {
