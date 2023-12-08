@@ -9,22 +9,35 @@ public class Players {
     private String userName; //Name of the Player //Nombre del Jugador
     private Card[] deckPlayer; //Deck of player // Mazo del jugador
     private int sum;
+    private int pocketPlayer;
+    private int bet;
 
 
 
 
-    public Players(String userName, Card[] deckPlayer, int sum) {
+
+    public Players(String userName, Card[] deckPlayer, int sum, int pocketPlayer,int bet) {
         this.userName = userName;
         this.deckPlayer = deckPlayer;
         this.sum=sum;
+        this.pocketPlayer=pocketPlayer;
+        this.bet = bet;
     }
-
+;
     public Players(){
-        this ("",null,0);
+        this ("",null,0,0,0);
     }
 
     public int getSum() {
         return sum;
+    }
+
+    public int getPocketPlayer() {
+        return pocketPlayer;
+    }
+
+    public void setPocketPlayer(int pocketPlayer) {
+        this.pocketPlayer = pocketPlayer;
     }
 
     public void setSum(int sum) {

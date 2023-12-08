@@ -14,7 +14,7 @@ public class Test {
     public static void main(String[] args) {
 
         printCasino();
-        optionWelcome(2);
+        optionWelcome();
 
 
     }
