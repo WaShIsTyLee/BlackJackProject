@@ -62,71 +62,78 @@ public class Card {
             return ts.toString();
         }
 
-        public StringBuilder comprobar ( int value){
+        public StringBuilder comprobar (int value) {
 
             String d = "\u001B[0m";
 
             StringBuilder sb = new StringBuilder();
 
-            switch (value) {
-                case 1:
-                    sb.append(color).append("-----------------\n");
-                    sb.append("|   Tu carta    |\n");
-                    sb.append("|               |\n");
-                    sb.append("|" + "    " + "AS" + "         " + ("|\n"));
-                    sb.append("|               |\n");
-                    sb.append("|   " + suit + "          " + (" |\n"));
-                    sb.append("|               |\n");
-                    sb.append("|               |\n");
-                    sb.append("-----------------\n" + d);
-                    break;
+                switch (value) {
+                    case 1:
+                        System.out.println(color + "┌─────────┐");
+                        System.out.println("| " + suit + "       |");
+                        System.out.println("|         |");
+                        System.out.println("|   " + "AS" + "    |");
+                        System.out.println("|         |");
+                        System.out.println("|     " + suit + "   |");
+                        System.out.println("└─────────┘" + d);
+                        ;
+                        break;
+                    case 10:
+                        System.out.println(color + "┌─────────┐");
+                        System.out.println("| " + suit + "       |");
+                        System.out.println("|         |");
+                        System.out.println("|   " + "10" + "    |");
+                        System.out.println("|         |");
+                        System.out.println("|     " + suit + "   |");
+                        System.out.println("└─────────┘" + d);
+                        ;
 
-                case 11:
-                    sb.append(color).append("-----------------\n");
-                    sb.append("|   Tu carta    |\n");
-                    sb.append("|               |\n");
-                    sb.append("|" + "    " + "J" + "         " + ("|\n"));
-                    sb.append("|               |\n");
-                    sb.append("|   " + suit + "          " + (" |\n"));
-                    sb.append("|               |\n");
-                    sb.append("|               |\n");
-                    sb.append("-----------------\n" + d);
-                    break;
-                case 12:
-                    sb.append(color).append("-----------------\n");
-                    sb.append("|   Tu carta    |\n");
-                    sb.append("|               |\n");
-                    sb.append("|" + "    " + "Q" + "         " + ("|\n"));
-                    sb.append("|               |\n");
-                    sb.append("|   " + suit + "          " + (" |\n"));
-                    sb.append("|               |\n");
-                    sb.append("|               |\n");
-                    sb.append("-----------------\n" + d);
-                    break;
-                case 13:
-                    sb.append(color).append("-----------------\n");
-                    sb.append("|   Tu carta    |\n");
-                    sb.append("|               |\n");
-                    sb.append("|" + "    " + "K" + "         " + ("|\n"));
-                    sb.append("|               |\n");
-                    sb.append("|   " + suit + "          " + (" |\n"));
-                    sb.append("|               |\n");
-                    sb.append("|               |\n");
-                    sb.append("-----------------\n" + d);
-                    break;
-                default:
-                    sb.append(color).append("-----------------\n");
-                    sb.append("|   Tu carta    |\n");
-                    sb.append("|               |\n");
-                    sb.append("|" + "    " + value + "         " + ("|\n"));
-                    sb.append("|               |\n");
-                    sb.append("|   " + suit + "          " + (" |\n"));
-                    sb.append("|               |\n");
-                    sb.append("|               |\n");
-                    sb.append("-----------------\n" + d);
+                        break;
+
+
+                    case 11:
+                        System.out.println(color + "┌─────────┐");
+                        System.out.println("| " + suit + "       |");
+                        System.out.println("|         |");
+                        System.out.println("|   " + "J" + "     |");
+                        System.out.println("|         |");
+                        System.out.println("|     " + suit + "   |");
+                        System.out.println("└─────────┘" + d);
+                        break;
+
+                    case 12:
+                        System.out.println(color + "┌─────────┐");
+                        System.out.println("| " + suit + "       |");
+                        System.out.println("|         |");
+                        System.out.println("|   " + "Q" + "     |");
+                        System.out.println("|         |");
+                        System.out.println("|     " + suit + "   |");
+                        System.out.println("└─────────┘" + d);
+
+                        break;
+                    case 13:
+                        System.out.println(color + "┌─────────┐");
+                        System.out.println("| " + suit + "       |");
+                        System.out.println("|         |");
+                        System.out.println("|   " + "K" + "     |");
+                        System.out.println("|         |");
+                        System.out.println("|     " + suit + "   |");
+                        System.out.println("└─────────┘" + d);
+                        ;
+                        break;
+                    default:
+                        System.out.println(color + "┌─────────┐");
+                        System.out.println("| " + suit + "       |");
+                        System.out.println("|         |");
+                        System.out.println("|   " + value + "     |");
+                        System.out.println("|         |");
+                        System.out.println("|     " + suit + "   |");
+                        System.out.println("└─────────┘" + d);
+                        ;
+
+                }
+                return sb;
 
             }
-            return sb;
-
         }
-    }

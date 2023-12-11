@@ -62,20 +62,6 @@ public class Players {
     }
 
 
-    public void cardPlayer(Card[] playerDeck, Card player) {
-
-        System.out.println(playerDeck);
-        System.out.println(player);
-
-        Card[] newPlayerDeck = new Card[playerDeck.length + 1];
-        for (int i = 0; i < playerDeck.length; i++) {
-
-            newPlayerDeck[i] = playerDeck[i];
-
-        }
-        newPlayerDeck[(newPlayerDeck.length - 1)] = player;
-        setDeckPlayer(newPlayerDeck);
-    }
 
     @Override
     public boolean equals(Object o) {
