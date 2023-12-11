@@ -4,8 +4,8 @@ import java.util.Arrays;
 import java.util.Random;
 
 public class Deck {
-    private Card[] cards = new Card[52];
-    private String[] suit = {"\u2666", "\u2660", "\u2764", "\u2663"};
+    private Card[] cards = new Card[52];  //Deck of 52 cards // Mazo de 52 cartas
+    private String[] suit = {"\u2666", "\u2660", "\u2764", "\u2663"}; // suit of the deck Diamonds, Lance, Hearths, Clovers // Palos del mazo Diamantes, Picas, Corazones y Trebolos
 
     public Card[] getCards() {
         return cards;

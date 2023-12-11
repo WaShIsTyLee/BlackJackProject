@@ -5,11 +5,9 @@ import java.util.Objects;
 public class Card {
 
 
-    private int value;
-    private String suit; //Palo de la Carta
-    private String color; //Color de la Carta
-    String blanco = "\033[47m";
-    private StringBuilder ts;
+    private int value; // Value of Card //Valor de la cara
+    private String suit; // Suit of Card //Palo de la Carta
+    private String color; // Color of Card //Color de la Carta
 
     public Card(int value, String suit, String color) {
         this.value = value;
@@ -53,16 +51,14 @@ public class Card {
         }
 
 
-        //TOCAR ESTO PARA CREAR UNA CARTA
-
         @Override
         public String toString () {
 
-            StringBuilder ts = comprobar(value);
+            StringBuilder ts = check(value);
             return ts.toString();
         }
 
-        public StringBuilder comprobar (int value) {
+        public StringBuilder check (int value) {
 
             String d = "\u001B[0m";
 

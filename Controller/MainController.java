@@ -24,8 +24,10 @@ public class MainController {
         optionWelcome();
     }
 
-
-    public static int menu() {
+    /**
+     * Menu of game with a switch with players in game // Menu con switch en funcion de los jugadores
+     */
+    public static void menu() {
         players = playersOfGame();
 
 
@@ -215,19 +217,24 @@ public class MainController {
         }
 
 
-        return players;
-
-
     }
 
+    /**
+     * Regulates the cards requested by the IA based on the maximum value of the players
+     * Regula las cartas pedidas por la IA en función del valor máximo alcanzado por los jugadores
+     * @param player  IA
+     * @param maxSumPlayer Max Sum of 4 players // Valor máximo de puntos de entre los jugadores
+     * @return
+     */
 
-    public static Card[] wantIA(Players player, int sumPlayer) {
+
+    public static Card[] wantIA(Players player, int maxSumPlayer) {
 
         int resultado = 0;
         boolean valid = true;
 
         do {
-            if (sumPlayer > resultado && sumPlayer < 21) {
+            if (maxSumPlayer > resultado && maxSumPlayer < 21) {
 
                 cardAsked(player, 1);
                 resultado = isBlackJack(player);
@@ -239,6 +246,11 @@ public class MainController {
         return player.getDeckPlayer();
     }
 
+    /**
+     * Ask if he wants cards and gives him one // Preguntar si quiere carta y da una en caso de Si
+     * @param player player // jugador
+     * @return player deck // mazo de jugador
+     */
     public static Card[] wantCard(Players player) {
 
         String option;
@@ -262,6 +274,13 @@ public class MainController {
         return player.getDeckPlayer();
     }
 
+    /**
+     * Create cards depending on how many are requested // Crear cartas en funcion de cuantas se pidan
+     * This one is used on wantCard for give Cards to player // Re utilizada en wantCard para dar la carta al jugador
+     *
+     * @param player  // jugador
+     * @param howMany // cuantas
+     */
 
     public static void cardAsked(Players player, int howMany) {
 
@@ -301,6 +320,12 @@ public class MainController {
         }
     }
 
+    /**
+     * Regulates value of Cards for 1,11,12,13 // Regula el valor de las cartas 1,11,12,13 : AS, J, K, Q,
+     *
+     * @param player // jugador
+     * @return // count
+     */
 
     public static int isBlackJack(Players player) {
 
@@ -324,25 +349,13 @@ public class MainController {
         return count;
     }
 
-    public static void winner(Players[] players) {
-        String purple = "\033[35m";
-        String d = "\u001B[0m"; //borrar
 
-        String winner = "";
-        int aux = 0;
 
-        for (Players player : players) {
-            if (player.getSum() > aux && player.getSum() <= 21) {
-                aux = player.getSum();
-                winner = player.getUserName();
-            }
-        }
-        System.out.println(purple + "*-------------------------------------------------*" + d);
-        System.out.println(purple + "|" + d + " Enhorabuena " + winner + " es el ganador");
-        System.out.println(purple + "*-------------------------------------------------*" + d);
-
-    }
-
+    /**
+     * Shows points of players // Muestra los puntos del jugador
+     *
+     * @param players // Jugadores
+     */
     public static void soutPoints(Players players) {
         String purple = "\033[35m";
         String d = "\u001B[0m"; //borrar
@@ -352,7 +365,11 @@ public class MainController {
         System.out.println(purple + "*-------------------------------------------------*" + d);
     }
 
-
+    /**
+     * Determined the player against whom IA will play // Determina contra quien jugara la IA
+     * @param players // Jugadores
+     * @return player vs IA // Jugador para la IA
+     */
     public static Players winnerVsIa(Players[] players) {
         Players winnerVsIa = null; // Inicializar con null
         int aux = 0;
@@ -366,24 +383,9 @@ public class MainController {
 
         return winnerVsIa;
     }
-
-
-    public static String keyboardString() {
-
-        Scanner teclado = new Scanner(System.in);
-
-        String keyboard = teclado.nextLine();
-
-        return keyboard;
-    }
-
-    public static int keyboardInt() {
-        Scanner teclado = new Scanner(System.in);
-        int keyboard = teclado.nextInt();
-
-        return keyboard;
-
-    }
 }
+
+
+
 
 
