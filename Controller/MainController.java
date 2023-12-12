@@ -234,7 +234,7 @@ public class MainController {
         boolean valid = true;
 
         do {
-            if (maxSumPlayer > resultado && maxSumPlayer < 21) {
+            if (maxSumPlayer > resultado && maxSumPlayer <= 21) {
 
                 cardAsked(player, 1);
                 resultado = isBlackJack(player);
@@ -265,11 +265,15 @@ public class MainController {
 
                 cardAsked(player, 1);
                 System.out.println(player.toString());
+                player.setSum(isBlackJack(player));
+                soutPoints(player);
 
-            } else {
+            } else if (option.toLowerCase().equals("no") ) {
                 System.out.print(player.toString());
                 valid = false;
-            }
+            }else{
+                System.out.println("Introduzca si o no");
+        }
         } while (valid);
         return player.getDeckPlayer();
     }
@@ -292,8 +296,6 @@ public class MainController {
                     int randomCard = (int) (Math.random() * 52);
                     newPlayerCards[i] = deck.getCards()[randomCard];
                     deck.getCards()[randomCard] = null;
-                    //    player.setSum()
-                    //    soutResult(players1.getSum(isBlackJack(player)));
 
                 } while (newPlayerCards[i] == null);
 
@@ -309,8 +311,9 @@ public class MainController {
 
                     } else {
                         int randomCard = (int) (Math.random() * 52);
-                        newPlayerCards[i] = deck.getCards()[(int) (Math.random() * 52)];  //sacar del mazo
+                        newPlayerCards[i] = deck.getCards()[(int) (Math.random() * 52)];
                         deck.getCards()[randomCard] = null;
+
                     }
                 } while (newPlayerCards[i] == null);
 
@@ -333,8 +336,7 @@ public class MainController {
         int count = 0;
         for (int i = 0; i < cards.length; i++) {
 
-            //preguntar como hago para que este AS siga valiendo 1
-            if (cards[i].getValue() == 1 && player.getSum() <= 11) {
+            if (cards[i].getValue() == 1 && count < 11) {
                 count += 11;
 
             } else if (cards[i].getValue() == 11 || cards[i].getValue() == 12 || cards[i].getValue() == 13) {
@@ -351,19 +353,6 @@ public class MainController {
 
 
 
-    /**
-     * Shows points of players // Muestra los puntos del jugador
-     *
-     * @param players // Jugadores
-     */
-    public static void soutPoints(Players players) {
-        String purple = "\033[35m";
-        String d = "\u001B[0m"; //borrar
-
-        System.out.println(purple + "*-------------------------------------------------*" + d);
-        System.out.println(purple + "|" + d + " Tu puntuacion ahora mismo es de: " + players.getSum() + purple + "             |" + d);
-        System.out.println(purple + "*-------------------------------------------------*" + d);
-    }
 
     /**
      * Determined the player against whom IA will play // Determina contra quien jugara la IA
@@ -371,7 +360,7 @@ public class MainController {
      * @return player vs IA // Jugador para la IA
      */
     public static Players winnerVsIa(Players[] players) {
-        Players winnerVsIa = null; // Inicializar con null
+        Players winnerVsIa = null;
         int aux = 0;
 
         for (Players player : players) {

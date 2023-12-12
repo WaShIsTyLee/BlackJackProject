@@ -2,6 +2,7 @@ package View;
 
 import Model.Players;
 
+import java.util.Arrays;
 import java.util.Scanner;
 
 import static Controller.MainController.*;
@@ -118,12 +119,15 @@ public class ViewOfGame {
         do {
             System.out.println("Introduce tu nombre de usuario: ");
             name = keyboardString();
+            if (name.equalsIgnoreCase("Ia")) {
+                System.out.println("Tu nombre no puede ser igual al de IA");
+            }
 
             if (usedName.contains(name)) {
                 System.out.println("Este nombre ya está en uso. Por favor, elige otro.");
             }
 
-        } while (usedName.contains(name));
+        } while (usedName.contains(name) || name.equalsIgnoreCase("Ia"));
 
         usedName += name + " ";
         return name;
@@ -142,11 +146,23 @@ public class ViewOfGame {
 
         if (player.getSum() > 21)
             System.out.println(purple + "|" + d + " Te has pasado de 21, su valor es: " + player.getSum());
-        else if (player.getSum() < 21)
+        else if (player.getSum() <= 21)
             System.out.println(purple + "|" + d + " Su valor total es " + player.getSum());
 
         System.out.println(purple + "*-------------------------------------------------*" + d);
 
+    }
+    /**
+     * Shows points of players // Muestra los puntos del jugador
+     * @param players // Jugadores
+     */
+    public static void soutPoints(Players players) {
+        String purple = "\033[35m";
+        String d = "\u001B[0m"; //borrar
+
+        System.out.println(purple + "*-------------------------------------------------*" + d);
+        System.out.println(purple + "|" + d + " Tu puntuacion ahora mismo es de: " + players.getSum() + purple + "             |" + d);
+        System.out.println(purple + "*-------------------------------------------------*" + d);
     }
 
     /**
@@ -157,20 +173,45 @@ public class ViewOfGame {
         String purple = "\033[35m";
         String d = "\u001B[0m";
 
-        String winner = "";
-        int aux = 0;
+        String[] winners;
+        int nWinners = 0;
+        int maxPoints = 0;
 
+        //Calculo la máxima puntuación
         for (Players player : players) {
-            if (player.getSum() > aux && player.getSum() <= 21) {
-                aux = player.getSum();
-                winner = player.getUserName();
+            if (player.getSum() > maxPoints && player.getSum() <= 21) {
+                maxPoints = player.getSum();
             }
         }
-        System.out.println(purple + "*-------------------------------------------------*" + d);
-        System.out.println(purple + "|" + d + " Enhorabuena " + winner + " es el ganador");
+        //Calculo cuántas personas tienen la máxima puntuación
+        for (Players player : players) {
+            if (player.getSum() ==maxPoints) {
+                nWinners++;
+            }
+        }
+        winners=new String[nWinners];
+
+        //Asigno los ganadores
+        int i=0;
+        for (Players player : players) {
+            if (player.getSum() ==maxPoints) {
+                winners[i++]=player.getUserName();
+            }
+        }
+
         System.out.println(purple + "*-------------------------------------------------*" + d);
 
+        if (winners.length > 1) {
+            System.out.println(purple + "|" + d + " Es un empate entre "+ Arrays.toString(winners));
+        } else if (winners.length==1){
+            System.out.println(purple + "|" + d + " Enhorabuena " + winners[0] + " es el ganador");
+        } else{
+            System.out.println(purple + "|" + d + " Nadie gana");
+        }
+
+        System.out.println(purple + "*-------------------------------------------------*" + d);
     }
+
 
     /**
      * Set IA name // Establecer nombre de la ia
