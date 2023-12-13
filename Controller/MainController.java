@@ -3,7 +3,6 @@ package Controller;
 import Model.Card;
 import Model.Deck;
 import Model.Players;
-
 import java.util.Scanner;
 
 import static View.ViewOfGame.*;
@@ -21,8 +20,13 @@ public class MainController {
 
     public static void startApp() {
         printCasino();
-        optionWelcome();
+        if (optionWelcome().equals("si")){
+            menu();
+        }
+
     }
+
+
 
     /**
      * Menu of game with a switch with players in game // Menu con switch en funcion de los jugadores

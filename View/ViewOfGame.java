@@ -58,7 +58,7 @@ public class ViewOfGame {
      * @return
      */
 
-    public static void optionWelcome() {
+    public static String optionWelcome() {
         boolean valid;
         System.out.println("¿Una partida de Blackjack señores y señoras?" + " 🃏");
         String option = "";
@@ -67,7 +67,7 @@ public class ViewOfGame {
             option = keyboardString().toLowerCase();
 
             if (option.equals("si")) {
-                menu();
+
                 valid = true;
             } else if (option.equals("no")) {
                 System.out.println("Gracias por su visita.");
@@ -78,7 +78,7 @@ public class ViewOfGame {
             }
 
         } while (!valid);
-
+return option;
     }
 
     /**
@@ -113,21 +113,24 @@ public class ViewOfGame {
      */
 
     public static String namePlayer() {
-
         String name = "";
+        boolean valid = false;
 
         do {
             System.out.println("Introduce tu nombre de usuario: ");
-            name = keyboardString();
+            name = keyboardString().trim(); // Utiliza trim() para quitar espacios al inicio y al final
+
             if (name.equalsIgnoreCase("Ia")) {
                 System.out.println("Tu nombre no puede ser igual al de IA");
-            }
-
-            if (usedName.contains(name)) {
+            } else if (usedName.contains(name)) {
                 System.out.println("Este nombre ya está en uso. Por favor, elige otro.");
+            } else if (name.isEmpty()) {
+                System.out.println("Su nombre no puede estar vacío");
+            } else {
+                valid = true;
             }
 
-        } while (usedName.contains(name) || name.equalsIgnoreCase("Ia"));
+        } while (!valid);
 
         usedName += name + " ";
         return name;
